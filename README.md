@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🖼 Estrutura do Projeto
 
-## Getting Started
+Visualização da estrutura de pastas atual:
 
-First, run the development server:
+![Estrutura de diretórios do projeto](./public/image.png)
+
+## 🛠 Tecnologias Utilizadas
+
+- **Next.js** – Framework React para aplicações web otimizadas
+- **React** – Biblioteca JavaScript para criação de interfaces de usuário
+- **Next Fonts** – Utilização das fontes `Geist` e `Geist Mono`
+- **CSS Modules** – Estilo com escopo local para evitar conflitos
+- **Vercel** – Hospedagem e deploy contínuo
+
+## ▶️ Como Rodar o Projeto
+
+Instale as dependências:
+
+```bash
+npm install
+````
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧩 Componentes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* `Header.js` – Exibe o título e botão de login no topo
+* `Form.js` – Formulário dinâmico com modo de login e cadastro
+* `NewsSection.js` – Sessão de notícias (ou conteúdo principal)
+* `layout.js` – Define fontes e estrutura base da aplicação
 
-## Learn More
+## 🎨 Estilização
 
-To learn more about Next.js, take a look at the following resources:
+* `globals.css` – Estilos globais aplicados à aplicação
+* `components.module.css` – Estilo local para `Header`, `Form`, etc.
+* `NewsSection.module.css` – Estilo específico para o componente de notícias
+* `page.module.css` – Estilo da página principal (`page.js`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Alternância entre **login e cadastro** no formulário
+* Layout responsivo com uso de **fontes otimizadas**
+* Navegação entre páginas com **roteamento Next.js**
+* Estilo modularizado para fácil manutenção
