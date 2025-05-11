@@ -1,28 +1,44 @@
+// components/NewsSection.js
 import styles from './NewsSection.module.css';
 
-export default function NewsSection() {
+export default function NewsSection({ articles }) {
+  if (!articles || articles.length === 0) return <p>Sem notícias disponíveis.</p>;
+
+  const main = articles[0];
+  const secondary = articles.slice(1, 3); // duas notícias secundárias
+
   return (
     <div className={styles.newsContainer}>
       <div className={styles.mainNews}>
-        <div className={styles.newsCard} style={{ backgroundImage: "url('/gta6.png')" }}>
+        <a
+          href={main.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.newsCard}
+          style={{ backgroundImage: `url(${main.urlToImage})` }}
+        >
           <div className={styles.newsContent}>
-            <h2>'GTA 6' ganha novo trailer com cenas inéditas</h2>
-            <p>Rockstar divulgou também detalhes dos personagens do jogo que chega em maio de 2026.</p>
+            <h2>{main.title}</h2>
+            <p>{main.description}</p>
           </div>
-        </div>
+        </a>
       </div>
       <div className={styles.secondaryNews}>
-        <div className={styles.newsCard} style={{ backgroundImage: "url('/davyjones.png')" }}>
-          <div className={styles.newsContent}>
-            <h2>Youtuber Davy Jones sofre infarto e é hospitalizado após receber a notícia de que 'GTA 6' foi adiado para 2026.</h2>
-          </div>
-        </div>
-        <div className={styles.newsCard} style={{ backgroundImage: "url('/OOOO.jpg')" }}>
-          <div className={styles.newsContent}>
-            <h2>Youtuber Davy Jones foge do hospital após receber a notícia de que foi lançado novo trailer de 'GTA 6'</h2>
-          </div>
-        </div>
+        {secondary.map((article, index) => (
+          <a
+            key={index}
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.newsCard}
+            style={{ backgroundImage: `url(${article.urlToImage})` }}
+          >
+            <div className={styles.newsContent}>
+              <h2>{article.title}</h2>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
-} 
+}
