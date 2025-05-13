@@ -7,7 +7,7 @@ export default function NewsSection({ articles }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  if (!articles || articles.length === 0) return <p>Sem notícias disponíveis.</p>;
+  if (!articles || articles.length === 0) return <p>No news available.</p>;
 
   const main = articles[0];
   const secondaryList = articles.slice(1); 
@@ -67,11 +67,11 @@ export default function NewsSection({ articles }) {
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Anterior
+            Previous
           </button>
-          <span className={styles.paginationText}>Página {currentPage} de {totalPages}</span>
+          <span className={styles.paginationText}>Page {currentPage} of {totalPages}</span>
           <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-            Próxima
+            Next
           </button>
         </div>
       )}
