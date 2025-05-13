@@ -114,3 +114,62 @@
 .toggleButton:hover {
   text-decoration: underline;
 } 
+
+.menuWrapper {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.menuButton {
+  color: white;
+  background-color: #0070f3;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menuButton:hover {
+  background-color: #005ec2;
+}
+
+.rightButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: black;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown button:hover {
+  background-color: #005ec2;
+  color: white;
+}
