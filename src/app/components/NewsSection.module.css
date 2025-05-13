@@ -1,21 +1,18 @@
 .newsContainer {
   display: flex;
   flex-wrap: wrap;
-  flex-wrap: wrap;
   gap: 20px;
-  padding: 40px 20px;
   padding: 40px 20px;
   width: 100%;
   min-height: 600px;
   box-sizing: border-box;
-  box-sizing: border-box;
+  align-items: stretch;
 }
 
 .mainNews {
   flex: 2;
   min-width: 300px;
-  flex: 2;
-  min-width: 300px;
+  height: 100%;
 }
 
 .secondaryNews {
@@ -24,19 +21,15 @@
   flex-direction: column;
   gap: 20px;
   min-width: 250px;
-  min-width: 250px;
 }
 
 .newsCard {
   position: relative;
   height: 100%;
   min-height: 200px;
-  height: 100%;
-  min-height: 200px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 10px;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -56,9 +49,7 @@
 
 .newsContent {
   width: 100%;
-  width: 100%;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 60%);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 60%);
   color: white;
 }
@@ -68,14 +59,9 @@
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.3;
-  font-size: 1.2rem;
-  font-weight: bold;
-  line-height: 1.3;
 }
 
 .newsContent p {
-  margin-top: 10px;
-  font-size: 0.95rem;
   margin-top: 10px;
   font-size: 0.95rem;
   opacity: 0.9;
@@ -102,13 +88,79 @@
   }
 }
 
+.secondaryNews .newsCard {
+  height: auto;
+  min-height: 180px;
+}
 
-  .newsCard {
-    height: auto;
-  }
+.secondaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 40px;
+}
 
-  .secondaryNews .newsCard {
-    height: auto;
-    min-height: 180px;
-  }
+.secondaryCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  text-decoration: none;
+  background: #383838;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  color: inherit;
+}
+
+.secondaryCard:hover {
+  transform: translateY(-3px);
+}
+
+.cardImage {
+  width: 120px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cardText {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardText h3 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+}
+
+.cardText p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

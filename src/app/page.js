@@ -1,12 +1,11 @@
 import styles from "./page.module.css";
 import Header from "./components/Header";
-import Header from "./components/Header";
 import NewsSection from './components/NewsSection';
 
 async function getNews() {
   const apiKey = '304c10c7af58435186c359b04ce3b9e0';
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
+    `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${apiKey}`
   );
   const data = await res.json();
 
@@ -23,7 +22,6 @@ export default async function Home() {
         <Header />
       </header>
       <main className={styles.main}>
-        <NewsSection articles={articles} />
         <NewsSection articles={articles} />
       </main>
     </div>

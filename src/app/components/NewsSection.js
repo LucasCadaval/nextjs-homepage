@@ -1,10 +1,32 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './NewsSection.module.css';
 
 export default function NewsSection({ articles }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
   if (!articles || articles.length === 0) return <p>Sem notícias disponíveis.</p>;
 
   const main = articles[0];
-  const secondary = articles.slice(1, 3); 
+  const secondary = articles.slice(1, 3);
+  const secondaryList = articles.slice(4); 
+
+  const totalPages = Math.ceil(secondaryList.length / itemsPerPage);
+
+  const paginatedItems = secondaryList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <div className={styles.newsContainer}>
@@ -16,22 +38,13 @@ export default function NewsSection({ articles }) {
           className={styles.newsCard}
           style={{ backgroundImage: `url(${main.urlToImage})` }}
         >
-        <a
-          href={main.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.newsCard}
-          style={{ backgroundImage: `url(${main.urlToImage})` }}
-        >
           <div className={styles.newsContent}>
-            <h2>{main.title}</h2>
-            <p>{main.description}</p>
             <h2>{main.title}</h2>
             <p>{main.description}</p>
           </div>
         </a>
-        </a>
       </div>
+
       <div className={styles.secondaryNews}>
         {secondary.map((article, index) => (
           <a
@@ -47,23 +60,37 @@ export default function NewsSection({ articles }) {
             </div>
           </a>
         ))}
-        {secondary.map((article, index) => (
+      </div>
+
+      <div className={styles.secondaryList}>
+        {paginatedItems.map((article, index) => (
           <a
             key={index}
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.newsCard}
-            style={{ backgroundImage: `url(${article.urlToImage})` }}
+            className={styles.secondaryCard}
           >
-            <div className={styles.newsContent}>
-              <h2>{article.title}</h2>
+            <img src={article.urlToImage} alt={article.title} className={styles.cardImage} />
+            <div className={styles.cardText}>
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
             </div>
           </a>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Anterior
+          </button>
+          <span>Página {currentPage} de {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            Próxima
+          </button>
+        </div>
+      )}
     </div>
   );
-}
-
 }
