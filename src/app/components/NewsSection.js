@@ -16,10 +16,20 @@ export default function NewsSection({ articles }) {
           className={styles.newsCard}
           style={{ backgroundImage: `url(${main.urlToImage})` }}
         >
+        <a
+          href={main.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.newsCard}
+          style={{ backgroundImage: `url(${main.urlToImage})` }}
+        >
           <div className={styles.newsContent}>
             <h2>{main.title}</h2>
             <p>{main.description}</p>
+            <h2>{main.title}</h2>
+            <p>{main.description}</p>
           </div>
+        </a>
         </a>
       </div>
       <div className={styles.secondaryNews}>
@@ -37,7 +47,23 @@ export default function NewsSection({ articles }) {
             </div>
           </a>
         ))}
+        {secondary.map((article, index) => (
+          <a
+            key={index}
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.newsCard}
+            style={{ backgroundImage: `url(${article.urlToImage})` }}
+          >
+            <div className={styles.newsContent}>
+              <h2>{article.title}</h2>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
+}
+
 }

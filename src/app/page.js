@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import Header from "./components/Header";
+import Header from "./components/Header";
 import NewsSection from './components/NewsSection';
 
 async function getNews() {
@@ -22,6 +23,7 @@ export default async function Home() {
         <Header />
       </header>
       <main className={styles.main}>
+        <NewsSection articles={articles} />
         <NewsSection articles={articles} />
       </main>
     </div>
