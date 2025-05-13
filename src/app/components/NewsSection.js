@@ -10,8 +10,7 @@ export default function NewsSection({ articles }) {
   if (!articles || articles.length === 0) return <p>Sem notícias disponíveis.</p>;
 
   const main = articles[0];
-  const secondary = articles.slice(1, 3);
-  const secondaryList = articles.slice(4); 
+  const secondaryList = articles.slice(1); 
 
   const totalPages = Math.ceil(secondaryList.length / itemsPerPage);
 
@@ -45,23 +44,6 @@ export default function NewsSection({ articles }) {
         </a>
       </div>
 
-      <div className={styles.secondaryNews}>
-        {secondary.map((article, index) => (
-          <a
-            key={index}
-            href={article.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.newsCard}
-            style={{ backgroundImage: `url(${article.urlToImage})` }}
-          >
-            <div className={styles.newsContent}>
-              <h2>{article.title}</h2>
-            </div>
-          </a>
-        ))}
-      </div>
-
       <div className={styles.secondaryList}>
         {paginatedItems.map((article, index) => (
           <a
@@ -71,7 +53,9 @@ export default function NewsSection({ articles }) {
             rel="noopener noreferrer"
             className={styles.secondaryCard}
           >
-            <img src={article.urlToImage} alt={article.title} className={styles.cardImage} />
+            <div className={styles.cardImageContainer}>
+              <img src={article.urlToImage} alt={article.title} className={styles.cardImage} />
+            </div>
             <div className={styles.cardText}>
               <h3>{article.title}</h3>
               <p>{article.description}</p>
@@ -85,7 +69,7 @@ export default function NewsSection({ articles }) {
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
             Anterior
           </button>
-          <span>Página {currentPage} de {totalPages}</span>
+          <span className={styles.paginationText}>Página {currentPage} de {totalPages}</span>
           <button onClick={handleNextPage} disabled={currentPage === totalPages}>
             Próxima
           </button>

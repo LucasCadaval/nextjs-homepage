@@ -8,7 +8,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <Link href="/" className={styles.logoLink}>
-          <h1>XYZ</h1>
+          <h1>BitNews</h1>
         </Link>
         <Link href="/login" className={styles.loginButton}>
           Login
