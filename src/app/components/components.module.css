@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  background-color: #1a1a1a;
+  background-color: white;
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -18,23 +18,17 @@
 }
 
 .logoLink h1 {
-  color: #ffffff;
+  color: black;
   margin: 0;
   font-size: 1.5rem;
 }
 
 .loginButton {
-  color: #ffffff;
+  color: white;
+  background-color: #0070f3;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border: 1px solid #ffffff;
   border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.loginButton:hover {
-  background-color: #ffffff;
-  color: #1a1a1a;
 }
 
 .formContainer {

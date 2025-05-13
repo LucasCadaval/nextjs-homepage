@@ -1,11 +1,31 @@
-// components/NewsSection.js
+'use client';
+
+import { useState } from 'react';
 import styles from './NewsSection.module.css';
 
 export default function NewsSection({ articles }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
   if (!articles || articles.length === 0) return <p>Sem notícias disponíveis.</p>;
 
   const main = articles[0];
-  const secondary = articles.slice(1, 3); // duas notícias secundárias
+  const secondaryList = articles.slice(1); 
+
+  const totalPages = Math.ceil(secondaryList.length / itemsPerPage);
+
+  const paginatedItems = secondaryList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <div className={styles.newsContainer}>
@@ -23,22 +43,38 @@ export default function NewsSection({ articles }) {
           </div>
         </a>
       </div>
-      <div className={styles.secondaryNews}>
-        {secondary.map((article, index) => (
+
+      <div className={styles.secondaryList}>
+        {paginatedItems.map((article, index) => (
           <a
             key={index}
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.newsCard}
-            style={{ backgroundImage: `url(${article.urlToImage})` }}
+            className={styles.secondaryCard}
           >
-            <div className={styles.newsContent}>
-              <h2>{article.title}</h2>
+            <div className={styles.cardImageContainer}>
+              <img src={article.urlToImage} alt={article.title} className={styles.cardImage} />
+            </div>
+            <div className={styles.cardText}>
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
             </div>
           </a>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Anterior
+          </button>
+          <span className={styles.paginationText}>Página {currentPage} de {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            Próxima
+          </button>
+        </div>
+      )}
     </div>
   );
 }

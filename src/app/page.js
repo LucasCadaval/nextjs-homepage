@@ -5,11 +5,10 @@ import NewsSection from './components/NewsSection';
 async function getNews() {
   const apiKey = '304c10c7af58435186c359b04ce3b9e0';
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
+    `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${apiKey}`
   );
   const data = await res.json();
 
-  // Filtrar apenas artigos com imagem
   const filtered = data.articles?.filter(article => article.urlToImage) || [];
   return filtered;
 }

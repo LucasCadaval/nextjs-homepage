@@ -1,6 +1,6 @@
 .newsContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
   padding: 40px 20px;
   width: 100%;
@@ -8,22 +8,11 @@
   box-sizing: border-box;
 }
 
-/* Notícia principal à esquerda */
 .mainNews {
-  flex: 2;
-  min-width: 300px;
+  width: 100%;
+  height: 100%;
 }
 
-/* Notícias secundárias à direita */
-.secondaryNews {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 250px;
-}
-
-/* Estilo base para todos os cards */
 .newsCard {
   position: relative;
   height: 100%;
@@ -40,17 +29,10 @@
   text-decoration: none;
 }
 
-/* Hover animado */
 .newsCard:hover {
   transform: scale(1.02);
 }
 
-/* Cartões menores */
-.secondaryNews .newsCard {
-  height: 190px;
-}
-
-/* Texto sobreposto */
 .newsContent {
   width: 100%;
   padding: 20px;
@@ -72,7 +54,6 @@
   line-height: 1.4;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .newsContainer {
     flex-direction: column;
@@ -91,4 +72,93 @@
     height: auto;
     min-height: 180px;
   }
+}
+
+.secondaryNews .newsCard {
+  height: auto;
+  min-height: 180px;
+}
+
+.secondaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.secondaryCard {
+  display: flex;
+  align-items: flex-start;
+  height: 100px;
+  gap: 15px;
+  text-decoration: none;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  color: inherit;
+}
+
+.secondaryCard:hover {
+  transform: translateY(-3px);
+}
+
+.cardImageContainer {
+  width: 120px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cardText {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardText h3 {
+  color: black;
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+}
+
+.cardText p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.paginationText {
+  color: black;
 }
