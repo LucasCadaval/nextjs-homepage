@@ -1,25 +1,31 @@
+'use client';
+
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Header from "./components/Header";
-import NewsSection from './components/NewsSection';
+import NewsSection from "./components/NewsSection";
 
-async function getNews() {
-  const apiKey = '304c10c7af58435186c359b04ce3b9e0';
-  const res = await fetch(
-    `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${apiKey}`
-  );
-  const data = await res.json();
+export default function Home() {
+  const [articles, setArticles] = useState([]);
+  const [topic, setTopic] = useState("programming");
 
-  const filtered = data.articles?.filter(article => article.urlToImage) || [];
-  return filtered;
-}
+  useEffect(() => {
+    async function fetchNews() {
+      const apiKey = "304c10c7af58435186c359b04ce3b9e0";
+      const apiUrl = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`;
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      const filtered = data.articles?.filter((article) => article.urlToImage) || [];
+      setArticles(filtered);
+    }
 
-export default async function Home() {
-  const articles = await getNews();
+    fetchNews();
+  }, [topic]);
 
   return (
     <div className={styles.page}>
       <header className={styles.headerContainer}>
-        <Header />
+        <Header selectedTopic={topic} onSelectTopic={setTopic} />
       </header>
       <main className={styles.main}>
         <NewsSection articles={articles} />
