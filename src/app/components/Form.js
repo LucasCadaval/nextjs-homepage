@@ -15,11 +15,11 @@ export default function Form() {
 
   return (
     <div className={styles.formContainer}>
-      <h2 className={styles.formTitle}>{isLogin ? 'Login' : 'Cadastro'}</h2>
+      <h2 className={styles.formTitle}>{isLogin ? 'Login' : 'Register'}</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         {!isLogin && (
           <div className={styles.formGroup}>
-            <label htmlFor="nome" className={styles.label}>Nome:</label>
+            <label htmlFor="nome" className={styles.label}>Name:</label>
             <input
               type="text"
               id="nome"
@@ -40,7 +40,7 @@ export default function Form() {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="senha" className={styles.label}>Senha:</label>
+          <label htmlFor="senha" className={styles.label}>Password:</label>
           <input
             type="password"
             id="senha"
@@ -51,7 +51,7 @@ export default function Form() {
         </div>
         {!isLogin && (
           <div className={styles.formGroup}>
-            <label htmlFor="confirmarSenha" className={styles.label}>Confirmar Senha:</label>
+            <label htmlFor="confirmarSenha" className={styles.label}>Confirm password:</label>
             <input
               type="password"
               id="confirmarSenha"
@@ -62,7 +62,7 @@ export default function Form() {
           </div>
         )}
         <button type="submit" className={styles.button}>
-          {isLogin ? 'Entrar' : 'Cadastrar'}
+          {isLogin ? 'Login' : 'Register'}
         </button>
       </form>
       <div className={styles.toggleForm}>
@@ -70,7 +70,7 @@ export default function Form() {
           className={styles.toggleButton}
           onClick={() => setIsLogin(!isLogin)}
         >
-          {isLogin ? 'Não tem uma conta? Cadastre-se' : 'Já tem uma conta? Faça login'}
+          {isLogin ? "Don't have an account? Register" : "Alredy has an account? Login"}
         </button>
       </div>
     </div>
